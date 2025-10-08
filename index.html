@@ -26,11 +26,24 @@
 
 <div class="flex justify-center mt-10 bg-black min-h-screen">
   <section class="grid grid-cols-3 grid-rows-3 gap-4 p-4 w-full max-w-6xl">
-    <div class="col-span-1 row-span-1 bg-red-500">1</div>
-    <div class="col-span-1 row-span-1 bg-blue-500">2</div>
-    <div class="col-span-1 row-span-2 bg-green-500">3</div>
-    <div class="col-span-2 row-span-1 bg-yellow-500">4</div>
-    <div class="col-span-3 row-span-1 bg-orange-500">5</div>
+
+    <div class="col-span-1 row-span-1 bg-red-500 flex flex-col justify-center items-center rounded-xl ">
+        <div class="flex items-center gap-2">
+            <img src="./img/leitor-de-temperatura.png" alt="icone temperatura" class="w-10">
+            <h3 class="font-bold text-xl">Temperatura da Vinheria </h3>
+        </div>
+        
+        <div class="flex items-center gap-2">
+            <span class="font-bold text-6xl">N</span>
+            <span class="font-bold text-3xl">°C</span>
+        </div>
+        
+    </div>
+    <div class="col-span-1 row-span-1 bg-blue-500 flex justify-center items-center rounded-xl">2</div>
+    <div class="col-span-1 row-span-2 bg-green-500 flex justify-center items-center rounded-xl">3</div>
+    <div class="col-span-2 row-span-1 bg-yellow-500 flex justify-center items-center rounded-xl">4</div>
+    <div class="col-span-3 row-span-1 bg-orange-500 flex justify-center items-center rounded-xl">5</div>
+
   </section>
 </div>
 
