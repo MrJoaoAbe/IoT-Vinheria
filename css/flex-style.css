@@ -112,25 +112,7 @@ body{
     border-radius: 20px;
 }
 
-.containerVinhos h3{
-    padding: 5px;
-    margin-bottom: 5px;
-    font-size: 30px;
-    font-family: 'Brush Script MT', cursive;
-}
 
-.containerVinhos p{
-    margin: 5px;
-    margin-top: 10px;
-    font-size: 17px;
-}
-
-.containerVinhos img{
-    margin: 5px;
-    margin-top: 10px;
-    font-size: 17px;
-    border-radius: 20px;
-}
 
 footer {
     background-color: black;
@@ -153,9 +135,4 @@ footer a:any-link{
     color: white;
 }
 
-.containerVinhos div:hover {
-    transition: 0.2s;
-    scale: 105%;
-    border: solid white;
-}
 
