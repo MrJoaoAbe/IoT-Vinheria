@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #B12672;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px 20px; 
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 20px; 
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#navTitulo {
+    font-size: 30px;
+    font-family: 'Brush Script MT', cursive;
+}
+
+#navHome:hover {
+    transition: 0.1s;
+    color: white;
+}
+
+
+.icone {
+    font-size: 24px; 
+    cursor: pointer;
+    margin-right: 50px;
+    font-size: 40px;
+
+}
+
+.navDireita {
+    display: flex;
+    align-items: center;
+    gap: 40px; 
+}
+
+.navDireita input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 200px;
+    height: 40px;
+    color: white;
+    background-color: #B12672;
+    font-size: 20px;
+
+}
+
+.navDireita input::placeholder {
+    color: white;
+    font-size: 20px;
+}
+
+.navDireita input:focus {
+    background-color: #7C1E52;
+    border: none;
+    outline: none; 
+    border: none; 
+}
+
+
+header {
+font-size: larger;
+background-image: url('../img/ImagemBonitaVinho.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+
+
+height: 400px;
+display: flex;             
+align-items: center;     
+justify-content: center; 
+color: white;    
+}
+
+body{
+    background-color: rgb(14, 15, 0);
+}
+.containerVinhos {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.containerVinhos div {
+    background-color: #F0DACD;
+    width: 450px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.containerVinhos h3{
+    padding: 5px;
+    margin-bottom: 5px;
+    font-size: 30px;
+    font-family: 'Brush Script MT', cursive;
+}
+
+.containerVinhos p{
+    margin: 5px;
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+.containerVinhos img{
+    margin: 5px;
+    margin-top: 10px;
+    font-size: 17px;
+    border-radius: 20px;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer a:any-link{
+    color: white;
+}
+
+::selection {
+    background-color: #B12672;
+    color: white;
+}
+
+.containerVinhos div:hover {
+    transition: 0.2s;
+    scale: 105%;
+    border: solid white;
+}
+
