@@ -88,12 +88,13 @@ display: flex;
 align-items: center;     
 justify-content: center; 
 color: white;    
+margin-bottom: 50px;
 }
 
 body{
     background-color: rgb(14, 15, 0);
 }
-.containerVinhos {
+/* .containerVinhos {
     padding-top: 20px;
     display: flex;
     flex-direction: row;
@@ -106,31 +107,13 @@ body{
 
 .containerVinhos div {
     background-color: #F0DACD;
-    width: 450px;
+    width: 100vw;
     padding: 15px;
     margin: 10px;
     border-radius: 20px;
-}
+} */
 
-.containerVinhos h3{
-    padding: 5px;
-    margin-bottom: 5px;
-    font-size: 30px;
-    font-family: 'Brush Script MT', cursive;
-}
 
-.containerVinhos p{
-    margin: 5px;
-    margin-top: 10px;
-    font-size: 17px;
-}
-
-.containerVinhos img{
-    margin: 5px;
-    margin-top: 10px;
-    font-size: 17px;
-    border-radius: 20px;
-}
 
 footer {
     background-color: black;
@@ -153,9 +136,4 @@ footer a:any-link{
     color: white;
 }
 
-.containerVinhos div:hover {
-    transition: 0.2s;
-    scale: 105%;
-    border: solid white;
-}
 

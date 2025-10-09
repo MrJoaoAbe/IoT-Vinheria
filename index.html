@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/flex-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
+     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <title>Vinheria Agnello</title>
 </head>
+
 <body>
 
 <nav>
     <ul>
-        <li id="navTitulo"><h2>Vinheria Agnello</h2></li>
-        <li id="navHome"><h2> HOME</h2></li>
+        <li id="navTitulo"><h2 class="font-bold text-3xl">Vinheria Agnello</h2></li>
+        <li id="navHome"><h2 class="font-bold text-xl"> HOME</h2></li>
     </ul>
     <div class="navDireita">
         <input type="text" placeholder="Pesquisar...">
@@ -20,46 +24,52 @@
 </nav>
 
 <header>
-    <h1>VINHOS</h1>
+    <h1 class="text-5xl">MONITORAMENTO VINHERIA AGNELLO</h1>
 </header>
 
-<section class="containerVinhos">
-    <div>
-        <h3>Grenache</h3>
-        <img src="img/VInho3.avif" alt="Vinho Grenache" width="300px">
-        <p>Um vinho frutado, com notas de morango e especiarias suaves. Ideal para dias quentes e harmonizações leves.</p>
+<div class="flex justify-center mt-10 min-h-screen">
+  <section class="grid grid-cols-3 grid-rows-3 gap-4 p-4 w-full max-w-6xl">
+
+    <div class="col-span-1 row-span-1 bg-red-500 flex flex-col justify-center items-center rounded-xl ">
+        <div class="flex items-center gap-2">
+            <img src="./img/leitor-de-temperatura.png" alt="icone temperatura" class="w-10">
+            <h3 class="font-bold text-xl">Temperatura da Vinheria </h3>
+        </div>
+        
+        <div class="flex items-center gap-2">
+            <span class="font-bold text-6xl">N</span>
+            <span class="font-bold text-3xl">°C</span>
+        </div>
+        
+    </div>
+    <div class="col-span-1 row-span-1 bg-blue-500 flex flex-col justify-center items-center rounded-xl">
+        <div class="flex items-center gap-2">
+            <img src="./img/umidade.png" alt="icone umidade" class="w-10">
+            <h3 class="font-bold text-xl">Umidade da Vinheria </h3>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <span class="font-bold text-6xl">N</span>
+            <span class="font-bold text-3xl">%</span>
+        </div>
     </div>
 
-    <div>
-        <h3>Syrah</h3>
-        <img src="img/VInho1.avif" alt="Vinho Syrah" width="300px">
-        <p>Vinho encorpado, com aromas de frutas negras, pimenta e um toque de chocolate amargo. Perfeito para carnes vermelhas.</p>
+    <div class="col-span-1 row-span-1 bg-green-500 flex flex-col justify-center items-center rounded-xl p-6 relative">
+  <h3 class="absolute top-8 left-12 text-black font-bold text-xl">
+    Gráfico de Umidade
+  </h3>
+  <div id="chartUmidade"></div>
     </div>
 
-    <div>
-        <h3>Sauvignon Blanc</h3>
-        <img src="img/VInho2.avif" alt="Vinho Sauvignon Blanc" width="300px">
-        <p>Fresco e aromático, com notas de maracujá e lima. Excelente para acompanhar frutos do mar e saladas.</p>
+    <div class="col-span-3 row-span-1 bg-yellow-500 flex justify-center items-center rounded-xl">
+        <div id="graficoLinha" class="w-full"></div>
+    </div>
+    <div class="col-span-3 row-span-1 bg-orange-500 flex justify-center items-center rounded-xl">
+        <div id="graficoLDR" class="w-full"></div>
     </div>
 
-    <div>
-        <h3>Cabernet Sauvignon</h3>
-        <img src="img/snapshot-wine-glass.jpg" alt="Vinho Cabernet Sauvignon" width="300px">
-        <p>Clássico e robusto, com sabores de cassis, ameixa e toques de baunilha. Ideal para pratos de sabor intenso.</p>
-    </div>
-
-    <div>
-        <h3>Chardonnay</h3>
-        <img src="img/vinho4.jpg" alt="Vinho Chardonnay" width="300px">
-        <p>Elegante e cremoso, apresenta notas de maçã verde, abacaxi e leve toque amanteigado. Combina bem com peixes e aves.</p>
-    </div>
-
-    <div>
-        <h3>Rosé</h3>
-        <img src="img/glass-rose-sparkling-wine.jpg" alt="Vinho Rosé" width="300px">
-        <p>Leve e refrescante, com aromas de frutas vermelhas e flores. Ótima escolha para tardes ensolaradas.</p>
-    </div>
-</section>
+  </section>
+</div>
 
 <footer>
     <p>Vinheria Agnello • Rua dos Vinhos, 123 – São Paulo – SP</p>
@@ -71,5 +81,109 @@
     <p>&copy; 2025 Clube Agnello. Todos os direitos reservados.</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+// Configuração do gráfico umidade
+const options = {
+  chart: {
+    height: 280,
+    type: "radialBar",
+  },
+  series: [75], // valor da umidade (%)
+  plotOptions: {
+    radialBar: {
+      startAngle: -90,  // começa do lado esquerdo
+      endAngle: 90,     // termina do lado direito → forma meia-lua
+      hollow: {
+        margin: 0,
+        size: "70%", // controla o tamanho do círculo interno (maior = mais fino)
+      },
+      track: {
+        background: "#E5E7EB", // cor do fundo
+        strokeWidth: "100%",
+      },
+      dataLabels: {
+        name: {
+          show: true,
+          color: "#fff",
+          fontSize: "16px",
+          offsetY: 20
+        },
+        value: {
+          show: true,
+          fontSize: "36px",
+          color: "#fff",
+          offsetY: -10,
+          formatter: (val) => `${val}%` // adiciona o símbolo de porcentagem
+        }
+      }
+    }
+  },
+  fill: {
+    colors: ["red"], // cor do arco
+  },
+  stroke: {
+    lineCap: "round", // bordas arredondadas
+  },
+  labels: ["Umidade"],
+};
+
+// Renderiza o gráfico dentro da div #chart id
+const chart = new ApexCharts(document.querySelector("#chartUmidade"), options);
+chart.render();
+
+// Grafico Temperatura
+var optionsTemp = { 
+    chart: { type: 'line', height: 350, toolbar: { show: false },  
+    background: 'transparent' }, 
+    series: [{ name: 'Temperatura (°C)', 
+    data: [22, 24, 25, 23, 26, 27, 28] }], 
+    xaxis: { categories: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'], 
+    labels: { style: { colors: '#333', fontSize: '14px' } } }, 
+    yaxis: { title: { text: 'Temperatura (°C)' }, 
+    labels: { style: { colors: '#333' } } }, 
+    stroke: { curve: 'smooth', 
+// linhas arredondadas 
+    width: 3 }, colors: ['#EF4444'], 
+// cor da linha 
+    markers: { size: 5, colors: ['#fff'],
+    strokeColors: '#EF4444', strokeWidth: 2 },
+    title: { text: 'Temperatura da Vinheria ', 
+    align: 'center', style: { fontSize: '18px', color: '#111' } }, 
+    grid: { borderColor: '#eee' } }; 
+  
+var chartTemp = new ApexCharts(document.querySelector("#graficoLinha"), optionsTemp); 
+chartTemp.render();
+
+
+// Grafico LDR
+var optionsLDR = { 
+    chart: { type: 'line', height: 350, toolbar: { show: false },  
+    background: 'transparent' }, 
+    series: [{ name: 'Luminosidade', 
+    data: [22, 24, 25, 23, 26, 27, 28] }], 
+    xaxis: { categories: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'], 
+    labels: { style: { colors: '#333', fontSize: '14px' } } }, 
+    yaxis: { title: { text: 'Luminoisidade' }, 
+    labels: { style: { colors: '#333' } } }, 
+    stroke: { curve: 'smooth', 
+// linhas arredondadas 
+    width: 3 }, colors: ['#EF4444'], 
+// cor da linha 
+    markers: { size: 5, colors: ['#fff'],
+    strokeColors: '#EF4444', strokeWidth: 2 },
+    title: { text: 'Luminosidade na Vinheria', 
+    align: 'center', style: { fontSize: '18px', color: '#111' } }, 
+    grid: { borderColor: '#eee' } 
+}; 
+  
+var chartLDR = new ApexCharts(document.querySelector("#graficoLDR"), optionsLDR); 
+chartLDR.render();
+ </script>
+
+
+
 </body>
 </html>
+
