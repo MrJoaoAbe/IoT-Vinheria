@@ -54,18 +54,19 @@
         </div>
     </div>
 
-    <div class="col-span-1 row-span-2 bg-green-500 flex flex-col justify-center items-center rounded-xl p-4 relative">
-  <h3 class="absolute top-16 left-12 text-black font-bold text-xl">
+    <div class="col-span-1 row-span-1 bg-green-500 flex flex-col justify-center items-center rounded-xl p-6 relative">
+  <h3 class="absolute top-8 left-12 text-black font-bold text-xl">
     Gráfico de Umidade
   </h3>
-  <div id="chartUmidade" class="mt-8"></div>
-  <h3 class="absolute top-90 text-black text-center font-semibold text-lg">
-    Umidade atual da Vinheria Agnello
-  </h3>
-</div>
+  <div id="chartUmidade"></div>
+    </div>
 
-    <div class="col-span-2 row-span-1 bg-yellow-500 flex justify-center items-center rounded-xl">4</div>
-    <div class="col-span-3 row-span-1 bg-orange-500 flex justify-center items-center rounded-xl">5</div>
+    <div class="col-span-3 row-span-1 bg-yellow-500 flex justify-center items-center rounded-xl">
+        <div id="graficoLinha" class="w-full"></div>
+    </div>
+    <div class="col-span-3 row-span-1 bg-orange-500 flex justify-center items-center rounded-xl">
+        <div id="graficoLDR" class="w-full"></div>
+    </div>
 
   </section>
 </div>
@@ -131,7 +132,32 @@ const options = {
 // Renderiza o gráfico dentro da div #chart id
 const chart = new ApexCharts(document.querySelector("#chartUmidade"), options);
 chart.render();
-</script>
+
+// Grafico Temperatura
+var optionsTemp = { 
+    chart: { type: 'line', height: 350, toolbar: { show: false },  
+    background: 'transparent' }, 
+    series: [{ name: 'Temperatura (°C)', 
+    data: [22, 24, 25, 23, 26, 27, 28] }], 
+    xaxis: { categories: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'], 
+    labels: { style: { colors: '#333', fontSize: '14px' } } }, 
+    yaxis: { title: { text: 'Temperatura (°C)' }, 
+    labels: { style: { colors: '#333' } } }, 
+    stroke: { curve: 'smooth', 
+// linhas arredondadas 
+    width: 3 }, colors: ['#EF4444'], 
+// cor da linha 
+    markers: { size: 5, colors: ['#fff'],
+    strokeColors: '#EF4444', strokeWidth: 2 },
+    title: { text: 'Temperatura da Vinheria - Últimos 7 dias', 
+    align: 'center', style: { fontSize: '18px', color: '#111' } }, 
+    grid: { borderColor: '#eee' } }; 
+  
+var chartTemp = new ApexCharts(document.querySelector("#graficoLinha"), optionsTemp); 
+chartTemp.render();
+
+
+ </script>
 
 
 
