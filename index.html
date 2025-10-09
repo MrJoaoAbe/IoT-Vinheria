@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/flex-style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
+     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <title>Vinheria Agnello</title>
 </head>
+
 <body>
 
 <nav>
@@ -24,7 +27,7 @@
     <h1 class="text-5xl">MONITORAMENTO VINHERIA AGNELLO</h1>
 </header>
 
-<div class="flex justify-center mt-10 bg-black min-h-screen">
+<div class="flex justify-center mt-10 min-h-screen">
   <section class="grid grid-cols-3 grid-rows-3 gap-4 p-4 w-full max-w-6xl">
 
     <div class="col-span-1 row-span-1 bg-red-500 flex flex-col justify-center items-center rounded-xl ">
@@ -39,8 +42,28 @@
         </div>
         
     </div>
-    <div class="col-span-1 row-span-1 bg-blue-500 flex justify-center items-center rounded-xl">2</div>
-    <div class="col-span-1 row-span-2 bg-green-500 flex justify-center items-center rounded-xl">3</div>
+    <div class="col-span-1 row-span-1 bg-blue-500 flex flex-col justify-center items-center rounded-xl">
+        <div class="flex items-center gap-2">
+            <img src="./img/umidade.png" alt="icone umidade" class="w-10">
+            <h3 class="font-bold text-xl">Umidade da Vinheria </h3>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <span class="font-bold text-6xl">N</span>
+            <span class="font-bold text-3xl">%</span>
+        </div>
+    </div>
+
+    <div class="col-span-1 row-span-2 bg-green-500 flex flex-col justify-center items-center rounded-xl p-4 relative">
+  <h3 class="absolute top-16 left-12 text-black font-bold text-xl">
+    Gráfico de Umidade
+  </h3>
+  <div id="chartUmidade" class="mt-8"></div>
+  <h3 class="absolute top-90 text-black text-center font-semibold text-lg">
+    Umidade atual da Vinheria Agnello
+  </h3>
+</div>
+
     <div class="col-span-2 row-span-1 bg-yellow-500 flex justify-center items-center rounded-xl">4</div>
     <div class="col-span-3 row-span-1 bg-orange-500 flex justify-center items-center rounded-xl">5</div>
 
@@ -57,5 +80,61 @@
     <p>&copy; 2025 Clube Agnello. Todos os direitos reservados.</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+// Configuração do gráfico umidade
+const options = {
+  chart: {
+    height: 280,
+    type: "radialBar",
+  },
+  series: [75], // valor da umidade (%)
+  plotOptions: {
+    radialBar: {
+      startAngle: -90,  // começa do lado esquerdo
+      endAngle: 90,     // termina do lado direito → forma meia-lua
+      hollow: {
+        margin: 0,
+        size: "70%", // controla o tamanho do círculo interno (maior = mais fino)
+      },
+      track: {
+        background: "#E5E7EB", // cor do fundo
+        strokeWidth: "100%",
+      },
+      dataLabels: {
+        name: {
+          show: true,
+          color: "#fff",
+          fontSize: "16px",
+          offsetY: 20
+        },
+        value: {
+          show: true,
+          fontSize: "36px",
+          color: "#fff",
+          offsetY: -10,
+          formatter: (val) => `${val}%` // adiciona o símbolo de porcentagem
+        }
+      }
+    }
+  },
+  fill: {
+    colors: ["red"], // cor do arco
+  },
+  stroke: {
+    lineCap: "round", // bordas arredondadas
+  },
+  labels: ["Umidade"],
+};
+
+// Renderiza o gráfico dentro da div #chart id
+const chart = new ApexCharts(document.querySelector("#chartUmidade"), options);
+chart.render();
+</script>
+
+
+
 </body>
 </html>
+
