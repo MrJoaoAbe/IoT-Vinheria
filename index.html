@@ -149,7 +149,7 @@ var optionsTemp = {
 // cor da linha 
     markers: { size: 5, colors: ['#fff'],
     strokeColors: '#EF4444', strokeWidth: 2 },
-    title: { text: 'Temperatura da Vinheria - Últimos 7 dias', 
+    title: { text: 'Temperatura da Vinheria ', 
     align: 'center', style: { fontSize: '18px', color: '#111' } }, 
     grid: { borderColor: '#eee' } }; 
   
@@ -157,6 +157,29 @@ var chartTemp = new ApexCharts(document.querySelector("#graficoLinha"), optionsT
 chartTemp.render();
 
 
+// Grafico LDR
+var optionsLDR = { 
+    chart: { type: 'line', height: 350, toolbar: { show: false },  
+    background: 'transparent' }, 
+    series: [{ name: 'Luminosidade', 
+    data: [22, 24, 25, 23, 26, 27, 28] }], 
+    xaxis: { categories: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'], 
+    labels: { style: { colors: '#333', fontSize: '14px' } } }, 
+    yaxis: { title: { text: 'Luminoisidade' }, 
+    labels: { style: { colors: '#333' } } }, 
+    stroke: { curve: 'smooth', 
+// linhas arredondadas 
+    width: 3 }, colors: ['#EF4444'], 
+// cor da linha 
+    markers: { size: 5, colors: ['#fff'],
+    strokeColors: '#EF4444', strokeWidth: 2 },
+    title: { text: 'Luminosidade na Vinheria', 
+    align: 'center', style: { fontSize: '18px', color: '#111' } }, 
+    grid: { borderColor: '#eee' } 
+}; 
+  
+var chartLDR = new ApexCharts(document.querySelector("#graficoLDR"), optionsLDR); 
+chartLDR.render();
  </script>
 
 
