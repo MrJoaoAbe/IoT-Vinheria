@@ -90,22 +90,26 @@ Este projeto representa a **página inicial** dessa nova plataforma, com foco em
   - Tópico = /TEF/device001/attrs/p
 - BLOCO 2 / JSON
 - BLOCO 3 / WRITE FILE
-  - Caminho = bpm.txt
+  - Caminho = sensorVinheria.txt
   - Ação = Sobrescrever Arquivo
 - BLOCO 4 / CHANGE
-  - NOME = BPM
+  - NOME = umidade
   - msg.payload
-  - msg.payload.BPM
+  - msg.payload.umidade
 - BLOCO 5 / CHANGE
-  - NOME = timestamp
+  - NOME = temperatura
   - msg.payload
-  - msg.payload.timestamp
-- BLOCO 6 / HTTP IN
+  - msg.payload.temperatura
+- BLOCO 6 / CHANGE
+  - NOME = LDR
+  - msg.payload
+  - msg.payload.LDR
+- BLOCO 7 / HTTP IN
   - Método = GET
-  - URL = /bpm
-- BLOCO 7 / READ FILE
-  - bpm.txt
-- BLOCO 8 / HTTP RESPONSE
+  - URL = /sensorVinheria
+- BLOCO 8 / READ FILE
+  - sensorVinheria.txt
+- BLOCO 9 / HTTP RESPONSE
 
 ---
 
