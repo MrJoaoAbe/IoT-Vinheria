@@ -223,7 +223,7 @@
 
 
     function atualizarDados() {
-      fetch('http://localhost:1880/') // URL do seu Node-RED
+      fetch('http://localhost:1880/sensorVinheria') 
         .then(response => response.json())
         .then(data => {
           console.log("Json recebido:", data);

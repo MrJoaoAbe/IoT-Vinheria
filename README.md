@@ -595,7 +595,7 @@ Serial.println(buffer);
 
 
     function atualizarDados() {
-      fetch('http://localhost:1880/') // URL do Node-RED
+      fetch('http://localhost:1880/sensorVinheria') // URL do Node-RED
         .then(response => response.json())
         .then(data => {
           console.log("Json recebido:", data);
